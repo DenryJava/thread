@@ -1,6 +1,6 @@
 package cn.deng.sny;
 
-// 不安全买票
+// 安全买票
 public class UnsafeBuyTicket {
     public static void main(String[] args) {
         BuyTicket buyTicket = new BuyTicket();
@@ -22,7 +22,7 @@ class BuyTicket implements Runnable{
         }
     }
 
-    private void buy(){
+    private synchronized void buy(){
         // 判断是否有票
         if(ticket <= 0){
             flag=false;
@@ -30,7 +30,7 @@ class BuyTicket implements Runnable{
         }
         //模拟延迟
         try {
-            Thread.sleep(100);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
